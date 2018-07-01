@@ -23,7 +23,6 @@ this will tell the OS that the script is executable and that you have permission
 
 
 Where does this code start?  The entrypoint for this is start.sh.  This script will:
-<pre>
-	1.  clear all previous information from the working directory.  As you upload files, the directories will reflect what is known about on each 'server'.
-	2.  Start 4 instances of node:  1 for the main server, and 3 for the children (who perform the jobs).
-</pre>
+
+1.  clear all previous information from the working directory.  As you upload files, the directories will reflect what is known about on each 'server'.
+2.  Start 4 instances of node:  1 for the main server, and 3 for the children (who perform the jobs).
