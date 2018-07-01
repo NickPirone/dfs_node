@@ -2,11 +2,10 @@
 building a prototype distributed file system in node.js
 
 This program is broken up into really three components:
-<pre>
-	1.  The main application, which provides the common interfaces for uploading files and asking for functions to be performed on the files.
-	2.  The 'controller' => provides functionality for splicing files, mapping files to servers, mapping jobs to servers, and providing the general Map/Reduce framework.
-	3.  The dfs servers--individually assigned nodes that are given files.  they accept jobs to run directed at files they contain, and when finished return their results to the 'controller'.
-</pre>
+
+1.  The main application, which provides the common interfaces for uploading files and asking for functions to be performed on the files.
+2.  The 'controller' => provides functionality for splicing files, mapping files to servers, mapping jobs to servers, and providing the general Map/Reduce framework.
+3.  The dfs servers--individually assigned nodes that are given files.  they accept jobs to run directed at files they contain, and when finished return their results to the 'controller'.
 
 
 Prerequisites:
