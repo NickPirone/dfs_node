@@ -1,5 +1,5 @@
 # dfs_node
-building a prototype distributed file system in node.js
+Building a prototype distributed file system in node.js
 
 This program is broken up into really three components:
 
@@ -16,7 +16,7 @@ To download and run this project on your local machine, please clone the git rep
 
 		chmod u+x start.sh  
 		
-this will tell the OS that the script is executable and that you have permission to execute.  You may also have to do the same for the clear.sh script, which is invoked by start.sh.
+This will tell the OS that the script is executable and that you have permission to execute.  You may also have to do the same for the clear.sh script, which is invoked by start.sh.
 
 
 
@@ -25,3 +25,8 @@ Where does this code start?  The entrypoint for this is start.sh.  This script w
 
 1.  clear all previous information from the working directory.  As you upload files, the directories will reflect what is known about on each 'server'.
 2.  Start 4 instances of node:  1 for the main server, and 3 for the children (who perform the jobs).
+
+When you successfully run the start script, go to localhost:3000 to see a landing page.
+Choose a file to upload, and click 'upload'.
+Choose a file radio button and choose a job radio button and click 'start job'
+Go back to the main page--the result at the bottom will be updated as data is fed back from the child nodes.  You may need to click refresh if you don't see an update yet.
