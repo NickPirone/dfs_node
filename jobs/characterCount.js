@@ -1,20 +1,14 @@
 const readline = require('readline');
 const fs = require('fs');
 
-function characterCount(filepath, char) {
+var characterCount = function(filepath) {
 	var count = 0;
-	var fileopen = fs.createReadStream(filepath);
-	var lineReader = readline.createInterface(fileopen)
-	lineReader.on('line', line => {
-		for(var i = 0; i < line.length; i++) {
-			if(line.charAt(i) == char) {
-				count++;
-			}
-		}
-	});
-	lineReader.on('close', function() {
-		return count;
-	});
+	console.log("countLines started on filepath: " + filepath);
+	var lines = fs.readFileSync(filepath).toString().split(/[\n\r]/);
+	for(var i = 0; i < lines.length; i++) {
+		count += lines[i].length;
+	}
+	return count;
 }
 
 module.exports = characterCount;

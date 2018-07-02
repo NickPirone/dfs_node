@@ -16,9 +16,9 @@ class DFSController {
 		var childServer = 8080;
 		var postData = {
 			'fileName' : path.parse(filename).base,
-			'job' : job.toString()
+			'job' : job
 		};
-		postData = JSON.stringify(postData);
+		postData = JSON.stringify(postData,stringify_replacer);
 		var options = {
 			hostname: 'localhost',
 			port: childServer,
@@ -75,6 +75,10 @@ class DFSController {
 	};
 	
 };
+
+function stringify_replacer(key,value) {
+  return typeof value === "function" ? value.toString() : value;
+}
 
 module.exports = DFSController;//we set our module.exports to the class so that only that is exported.
 //when we require() it, the return value will be the class.

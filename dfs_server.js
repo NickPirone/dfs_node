@@ -1,5 +1,17 @@
 const http = require('http');
 const fs = require('fs');
+const readline = require('readline');
+
+function reviveFunctionEval(key,value) {
+	if(typeof value === "string" && value.indexOf('function') === 0) {
+		var functionStr = '(' + value + ')';
+		var fn = eval(functionStr);
+		return fn;
+	}
+	else {
+		return value;
+	}
+};
 
 function sendResult(result) {
 	var postData = {
@@ -39,18 +51,15 @@ const server = http.createServer( (req, res) => {
 		req.on("data", data => { body += data; });
 		req.on("end", function() {
 			console.log("child at port " + process.argv[2] + " received a job");
-			var job = JSON.parse(body).job;
-			var tempFn = new Function(job);
-			var filename = JSON.parse(body).fileName;
+			body = JSON.parse(body,reviveFunctionEval);
 			console.log(body);
-			//var result = job(filename);
-			//sendResult(result);
+			var serverFilePath = "./server_" + process.argv[3] + "/" + body.fileName;
+			var result = body.job(serverFilePath);
+			sendResult(result);
 		});
 	}
 	res.end();
 });
-
-
 
 
 server.on('connection', (socket) => {
